@@ -1,0 +1,23 @@
+[project]
+name = "chp-locknet"
+version = "0.1.0"
+description = "Verifiable AI agents on decentralized compute — Nosana GPUs + CHP gates + Arweave provenance"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "arweave-python>=1.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+gradio = ["gradio>=5.0", "transformers>=4.40", "torch>=2.0"]
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
