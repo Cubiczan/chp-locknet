@@ -22,4 +22,12 @@ EXPOSE 3000
 ENV NODE_ENV=production
 ENV PORT=3000
 
+# Runtime as non-root; Next.js writes cache under .next
+RUN groupadd --system --gid 1001 nodejs \
+    && useradd --system --uid 1001 --gid nodejs --create-home nextjs \
+    && mkdir -p /app/.next \
+    && chown -R nextjs:nodejs /app/.next
+
+USER nextjs
+
 CMD ["npx", "next", "start", "-p", "3000"]
